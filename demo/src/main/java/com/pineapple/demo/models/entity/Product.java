@@ -1,7 +1,13 @@
 package com.pineapple.demo.models.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table (name="products")
@@ -9,9 +15,9 @@ public class Product implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_product")
     private Long idProduct;
-    private String name;
+    private String productName;
     private Long idCategoryProduct;
     private String description;
     private Integer quantity;
@@ -30,11 +36,11 @@ public class Product implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return productName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String productName) {
+		this.productName = productName;
 	}
 
 	public Long getIdCategoryProduct() {
