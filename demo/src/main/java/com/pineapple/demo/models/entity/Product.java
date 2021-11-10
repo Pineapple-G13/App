@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +19,27 @@ public class Product implements Serializable {
     @Column(name = "id_product")
     private Long idProduct;
     private String productName;
-    private Long idCategoryProduct;
     private String description;
     private Integer quantity;
     @Column(name = "unit_price")
     private Double unitPrice;
     private String picture;
+    @ManyToOne
+    private ProductCategory productCategory;
     
     private static final long serialVersionUID = 1L;
+
+    public Product() {
+    }
+
+    public Product(String productName, String description, Integer quantity, Double unitPrice, String picture, ProductCategory productCategory) {
+        this.productName = productName;
+        this.description = description;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.picture = picture;
+        this.productCategory = productCategory;
+    }
 
 	public Long getIdProduct() {
 		return idProduct;
@@ -43,13 +57,7 @@ public class Product implements Serializable {
 		this.productName = productName;
 	}
 
-	public Long getIdCategoryProduct() {
-		return idCategoryProduct;
-	}
 
-	public void setIdCategoryProduct(Long idCategoryProduct) {
-		this.idCategoryProduct = idCategoryProduct;
-	}
 
 	public String getDescription() {
 		return description;

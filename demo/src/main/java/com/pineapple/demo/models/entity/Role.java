@@ -15,11 +15,11 @@ public class Role implements Serializable{
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name= "id_role")
 	private Long idRrole;
-	@Column (name = "role_name")
+         @Column(nullable = false, unique = true)
 	private String roleName;
-	public Long getIdRrole() {
+         
+	/*public Long getIdRrole() {
 		return idRrole;
 	}
 	public void setIdRrole(Long idRrole) {
@@ -36,5 +36,5 @@ public class Role implements Serializable{
 	}
 	private static final long serialVersionUID = 1L;
 	
-
+*/
 }
