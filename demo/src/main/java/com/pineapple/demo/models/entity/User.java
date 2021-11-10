@@ -1,6 +1,7 @@
 package com.pineapple.demo.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "users")
@@ -18,6 +21,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
+    private Integer idUser;
     private Long dni;
     @JoinColumn(nullable = false)
     private String username;
@@ -29,6 +33,8 @@ public class User implements Serializable {
     private String firstName;
     @Column(name = "user_lastname")
     private String lastName;
+    @Temporal(TemporalType.DATE)
+    Date fechaCreacion ;
     @ManyToOne
     @JoinColumn(nullable = false)
     private Role role;
@@ -36,14 +42,32 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long dni, String username, String password, String email, String firstName, String lastName, Role role) {
+    public User(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
         this.dni = dni;
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fechaCreacion = fechaCreacion;
         this.role = role;
+    }
+
+ 
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     
