@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
 	
 	@Modifying
-	@Query("UPDATE Product p SET p.productCategoryName = :productCategoryName")
+	@Query("UPDATE ProductCategory c SET c.productCategoryName = :productCategoryName")
     void modify(@Param("productCategoryName") String productCategoryName);
     
 }
