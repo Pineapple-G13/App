@@ -15,42 +15,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Garcia, Valdés
- */
+@Service
 public class RoleService {
 
     @Autowired
     private RoleService roleService;
     @Autowired
-    private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @Transactional
     public void create(String roleName){
         Role role = new Role();
         role.setRoleName(roleName);
+        roleRepository.save(role);
     }
     @Transactional
     public void modifyRole(String roleName){
         roleRepository.modify(roleName);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional//(readOnly = true)
     public List<Role> searchall(){
         return roleRepository.findAll();
     }
 
-    @Transactional
-    public Role getById(Long idRole){
-        Optional<Role> roleOptional = roleRepository.findById(idRole);
-        return  roleOptional.orElse(null);
-    }
-
-    @Transactional
-    public void delete(Long idRole){
-        roleRepository.deleteById(idRole);
-    }
-
-}
+//    @Transactional
+//    public Role getById(Long idRole){
+//        Optional<Role> roleOptional = roleRepository.findById(idRole);
+//        return  roleOptional.orElse(null);
+//    }
+//
+//    @Transactional
+//    public void delete(Long idRole){
+//        roleRepository.deleteById(idRole);
+ }

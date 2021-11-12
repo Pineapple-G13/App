@@ -24,7 +24,7 @@ public class Role implements Serializable{
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	/*public Long getIdRole() {
+	public Long getIdRole() {
 		return idRole;
 	}
 	public void setIdRrole(Long idRole) {
@@ -39,7 +39,7 @@ public class Role implements Serializable{
 	}
 	
 	
-*/
+
          //mi IDE me generó esta línea en automático, por eso la descomenté. A ver qué hace.
          private static final long serialVersionUID = 1L;
 

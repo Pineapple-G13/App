@@ -43,9 +43,6 @@ public class UserService implements UserDetailsService  {
     }
      public void modify( String username, String password, String email, String firstName, String lastName){
      userRepository.modify(username,password,email,firstName,lastName);
-     
-     
-     
      }
       public List<Users> searchAll() {
         return userRepository.findAll();
@@ -54,16 +51,7 @@ public class UserService implements UserDetailsService  {
     public void delete(Integer id){
     userRepository.deleteById(id);
     
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-            
+    } 
      @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        Users user=userRepository.buscarUsuarioPorUsername(username);
