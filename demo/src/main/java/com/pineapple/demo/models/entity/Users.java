@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +39,10 @@ public class User implements Serializable {
     @JoinColumn(nullable = false)
     private Role role;
 
-    public User() {
+    public Users() {
     }
 
-    public User(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
+    public Users(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
         this.dni = dni;
         this.username = username;
         this.password = password;
