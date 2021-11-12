@@ -1,7 +1,14 @@
 package com.pineapple.demo.models.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table (name="products")
@@ -9,49 +16,72 @@ public class Product implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long idProduct;
-    private String name;
-    private Long idCategoryProduct;
+    @Column(name = "id_product")
+    private Long id;
+    private String productName;
     private String description;
     private Integer quantity;
     @Column(name = "unit_price")
     private Double unitPrice;
     private String picture;
+    @ManyToOne
+    private ProductCategory productCategory;
     
     private static final long serialVersionUID = 1L;
 
-	public Long getIdProduct() {
-		return idProduct;
+    public Product() {
+    }
+
+    public Product(String productName, String description, Integer quantity, Double unitPrice, String picture, ProductCategory productCategory) {
+        this.productName = productName;
+        this.description = description;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.picture = picture;
+        this.productCategory = productCategory;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return name;
+		return productName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String productName) {
+		this.productName = productName;
 	}
 
-	public Long getIdCategoryProduct() {
-		return idCategoryProduct;
-	}
-
-	public void setIdCategoryProduct(Long idCategoryProduct) {
-		this.idCategoryProduct = idCategoryProduct;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public Integer getQuantity() {
 		return quantity;
