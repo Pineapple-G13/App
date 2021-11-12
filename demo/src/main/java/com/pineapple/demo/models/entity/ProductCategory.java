@@ -19,17 +19,17 @@ public class ProductCategory implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "id_category")
 	private Long idCategory;	
-        @Column(name= "product_name")
-	private String productName;
+        @Column(name= "product_category_name")
+	private String productCategoryName;
         @OneToMany(mappedBy="productCategory")
         private List<Product>products;
 
     public ProductCategory() {
     }
 
-    public ProductCategory(Long idCategory, String productName, List<Product> products) {
+    public ProductCategory(Long idCategory, String productCategoryName, List<Product> products) {
         this.idCategory = idCategory;
-        this.productName = productName;
+        this.productCategoryName = productCategoryName;
         this.products = products;
     }
 
@@ -53,13 +53,13 @@ public class ProductCategory implements Serializable{
 	}
 
 
-	public String getProductName() {
-		return productName;
+	public String getProductCategoryName() {
+		return productCategoryName;
 	}
 
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
 	}
 
 
