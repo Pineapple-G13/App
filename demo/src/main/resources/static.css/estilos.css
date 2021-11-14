@@ -112,7 +112,7 @@ font-size: 1.3em; }
 
 .selected::after {
   content: "";
-  background: url("img/arrowsvg.svg");
+  background: url(../img/arrowsvg.svg);
   background-size: contain;
   background-repeat: no-repeat;
 

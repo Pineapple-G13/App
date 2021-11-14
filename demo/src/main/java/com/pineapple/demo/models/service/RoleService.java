@@ -32,8 +32,8 @@ public class RoleService {
         roleRepository.save(role);
     }
     @Transactional
-    public void modifyRole(String roleName){
-        roleRepository.modify(roleName);
+    public void modifyRole(String roleName,Long idRole){
+        roleRepository.modify(roleName,idRole);
     }
 
     @Transactional//(readOnly = true)

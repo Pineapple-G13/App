@@ -34,7 +34,7 @@ public class Users implements Serializable {
     @Column(name = "user_lastname")
     private String lastName;
     @Temporal(TemporalType.DATE)
-    Date fechaCreacion ;
+    private Date fechaCreacion ;
     @ManyToOne
     @JoinColumn(nullable = false)
     private Role role;

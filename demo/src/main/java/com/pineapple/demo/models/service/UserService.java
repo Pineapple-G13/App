@@ -38,6 +38,7 @@ public class UserService implements UserDetailsService  {
     user.setUsername(username);
     user.setPassword(encoder.encode(password));
     user.setRole(role);
+    user.setFechaCreacion(fechaCreacion);
     userRepository.save(user);
     
     }
@@ -65,6 +66,10 @@ public class UserService implements UserDetailsService  {
 //             
 //    }
        return new User(user.getUsername(),user.getPassword(),Collections.emptyList());
+    }
+
+    public void create(String username, Long dni, String password, String email, String firstName, String lastName, Role role, Date fechaCreacion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

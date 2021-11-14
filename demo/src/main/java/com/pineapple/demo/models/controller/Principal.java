@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Principal {
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public ModelAndView inicio() {
         return new ModelAndView("index");
     }

@@ -18,12 +18,12 @@ public class RoleController {
      private RoleService roleService;
      @GetMapping("/create")
      public ModelAndView create(){
-     return new ModelAndView ("rol-formulario");//falta html
+     return new ModelAndView ("");//falta html
      
      }
      public RedirectView guardar(@RequestParam String roleName){
      roleService.create(roleName);
-     return new RedirectView("/index");//redirige a la pagina principal falta html
+     return new RedirectView();//redirige a la pagina principal falta html
      }
      
      
