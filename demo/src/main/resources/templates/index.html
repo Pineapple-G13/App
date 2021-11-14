@@ -23,8 +23,79 @@
      <div class="formularioInput">
             <input  id="username" placeholder="Username" required th:field="*{username}" type="text"/>
             <label for="username">Username</label>
+            <div class="formularioLabel">El usuario es obligatorio</div>
+        </div>
+    
+    <div class="formularioInput">
+            <input  id="firstName" placeholder="FirstName" required th:field="*{firstName}" type="text"/>
+            <label for="firstName">FirstNname</label>
             <div class="formularioLabel">El nombre es obligatorio</div>
         </div>
+    <div class="formularioInput">
+            <input  id="lastName" placeholder=" LastName" required th:field="*{lastName}" type="text"/>
+            <label for="lastName">LastName</label>
+            <div class="formularioLabel">El apellido es obligatorio</div>
+        </div>
+     <div class="formularioInput">
+            <input  id="dni" placeholder="Dni" required th:field="*{dni}" type="text"/>
+            <label for="dni">Dni</label>
+            <div class="formularioLabel">El DNI es obligatorio</div>
+        </div>
+     <div class="formularioInput">
+            <input  id="fechaCreacion" placeholder="FechaCreacion" required th:field="*{fechaCreacion}" type="date"/>
+            <label for="fechaCreacion">FechaCreacion</label>
+            <div class="formularioLabel">La fecha de creacion es obligatorio</div>
+        </div>
+    <div class="form-floating mb-3 col-xl-6">
+            <input class="formularioInput" id="email" placeholder="Email" required th:field="*{email}"
+                   type="email"/>
+            <label for="email">Email</label>
+            <div class="formularioLabel">El correo es obligatorio</div>
+        </div>
+      <div class="formularioInput">
+            <input class="form-control" id="password" placeholder="Password" required th:field="*{password}" type="password"/>
+            <label for="password">Password</label>
+            <div class="invalid-feedback">La clave es obligatoria</div>
+        </div>
+     <div class="form-floating mb-3 col-xl-6">
+            <select aria-label="Elegir rol" class="form-select" id="role" th:field="*{role}" required>
+                <option selected value="">Choose role</option>
+                <option th:each="rol : ${role}" th:text="${rol.roleName}"
+                        th:value="${rol.idRole}"></option>
+            </select>
+            <label for="rol">Role</label>
+            <div class="invalid-feedback">El rol es obligatorio</div>
+        </div>
+    <div class="row">
+            <div class="col-xl-3">
+                <button class="btn btn-success" th:text="${action == 'guardar'} ? 'Create user' : 'Guardar cambios'"
+                        type="submit"></button>
+            </div>
+        </div>
+    </form>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!--<input type="text" class="formularioInput">
     <label for="" class="formularioLabel">Username</label>
     <input type="password" class="formularioInput">
