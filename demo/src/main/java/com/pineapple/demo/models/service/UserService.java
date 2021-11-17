@@ -24,9 +24,9 @@ public class UserService implements UserDetailsService  {
     @Autowired
      private BCryptPasswordEncoder encoder;
      
-    private final String MENSAJE="El usuario ongresado no existe";
+    private final String MENSAJE="El usuario ingresado no existe";
     
-    
+     @Transactional
     public void create(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion,Role role) {
     //falta validar que el correo ya exite.
     Users user=new Users();
@@ -42,11 +42,17 @@ public class UserService implements UserDetailsService  {
     userRepository.save(user);
     
     }
+         @Transactional
      public void modify( String username, String password, String email, String firstName, String lastName){
      userRepository.modify(username,password,email,firstName,lastName);
      }
+       @Transactional
       public List<Users> searchAll() {
         return userRepository.findAll();
+    }
+       @Transactional
+    public Users searchByDni(Integer dni) {
+        return userRepository.findById(dni).orElse(null);
     }
        @Transactional
     public void delete(Integer id){
@@ -67,7 +73,7 @@ public class UserService implements UserDetailsService  {
 //    }
        return new User(user.getUsername(),user.getPassword(),Collections.emptyList());
     }
-
+//se creo automaticamente
     public void create(String username, Long dni, String password, String email, String firstName, String lastName, Role role, Date fechaCreacion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

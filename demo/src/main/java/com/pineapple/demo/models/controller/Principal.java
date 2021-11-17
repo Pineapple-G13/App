@@ -11,7 +11,7 @@ public class Principal {
 
     @GetMapping("/")
     public ModelAndView inicio() {
-        return new ModelAndView("index");
+        return new ModelAndView("users");
     }
 }
     

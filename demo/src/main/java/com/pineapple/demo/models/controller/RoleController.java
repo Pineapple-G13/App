@@ -5,6 +5,7 @@ import com.pineapple.demo.models.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,12 +19,13 @@ public class RoleController {
      private RoleService roleService;
      @GetMapping("/create")
      public ModelAndView create(){
-     return new ModelAndView ("");//falta html
+     return new ModelAndView ("rol-formulario");//falta html
      
      }
+     @PostMapping("/guardar")
      public RedirectView guardar(@RequestParam String roleName){
      roleService.create(roleName);
-     return new RedirectView();//redirige a la pagina principal falta html
+     return new RedirectView("users");//redirige a la pagina principal falta html
      }
      
      

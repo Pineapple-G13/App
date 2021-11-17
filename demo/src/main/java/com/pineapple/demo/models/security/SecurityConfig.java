@@ -11,14 +11,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     
+    @Override
     protected void configure(HttpSecurity http)throws Exception{
        http
                .authorizeRequests()
-               .antMatchers("/css/*")//agregar recursos para que accedan todos css,img.etc
+               .antMatchers("/css/*","/img/*","/assets/*")//agregar recursos para que accedan todos css,img.etc
                .permitAll()
                .antMatchers("/**").permitAll()
                .and()
                .formLogin()
-               .loginPage("/index").permitAll();
+               .loginPage("/**").permitAll();
     }
 }
