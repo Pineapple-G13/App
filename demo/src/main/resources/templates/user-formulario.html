@@ -17,7 +17,7 @@
 
 <body>
     
-    <form autocomplete="off" id="formulario" method="POST"  th:action="@{/users/__${action}__}" th:object="${user}">
+    <form autocomplete="off" id="formulario" method="POST"  th:action="@{/user/__${action}__}" th:object="${user}">
         
     <h1 class="formularioTitulo">New User</h1>
     
@@ -58,11 +58,11 @@
             <label for="password">Password</label>
             <div class="invalid-feedback">The password is required</div>
         </div>
-     <!--<div class="form-floating mb-3 col-xl-6">
+     <div class="form-floating mb-3 col-xl-6">
             <select aria-label="Elegir rol" class="form-select" id="role" th:field="*{role}" required>
                 <option selected value="">Choose role</option>
-                <option th:each="rol : ${role}" th:text="${rol.roleName}"
-                        th:value="${rol.idRole}"></option>
+                <option th:each="role : ${T(com.pineapple.demo.models.enums.Role).values()}" th:text="${role}"
+                        th:value="${role}"></option>
             </select>
             <label for="role">Role</label>
             <div class="invalid-feedback">The role is required</div>

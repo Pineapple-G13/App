@@ -1,10 +1,14 @@
 package com.pineapple.demo.models.entity;
 
+import com.pineapple.demo.models.enums.Role;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +27,7 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer idUser;
+     @JoinColumn(nullable = false)
     private Long dni;
     @JoinColumn(nullable = false)
     private String username;
@@ -33,16 +39,26 @@ public class Users implements Serializable {
     private String firstName;
     @Column(name = "user_lastname")
     private String lastName;
-    @Temporal(TemporalType.DATE)
-    private Date fechaCreacion ;
-    @ManyToOne
+     @CreatedDate
+    @Column(nullable = false)
+    private LocalDate fechaCreacion ;
+    
+    @Enumerated(EnumType.STRING)
     @JoinColumn(nullable = false)
     private Role role;
 
     public Users() {
     }
 
-    public Users(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Users(Long dni, String username, String password, String email, String firstName, String lastName, LocalDate fechaCreacion, Role role) {
         this.dni = dni;
         this.username = username;
         this.password = password;
@@ -62,24 +78,13 @@ public class Users implements Serializable {
         this.idUser = idUser;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-
-    
-    
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
    
     
     private static final long serialVersionUID = 1L;

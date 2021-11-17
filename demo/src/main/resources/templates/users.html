@@ -23,28 +23,27 @@
             <div class="card-body">
               <h5 class="card-title">USERS</h5>
               <h6 class="card-subtitle mb-2 text-muted">Opciones</h6>
-              <a class="card-link" th:href="@{/users}">Mostrar todos</a>
-              <a class="card-link" th:href="@{/users/create}">Crear usuario</a>
+              <a class="card-link" th:href="@{/user}">Mostrar todos</a>
+              <a class="card-link" th:href="@{/user/create}">Crear usuario</a>
             </div>
           </div>
     </nav>
 
-<div>
-        <br>
-        <h3><small class="text-muted">List User</small></h3>   
-        <br>
-        <hr class="mb-5"/>
+      <div>
+       
+        
+       
+        <hr class="mb-5"/>  
     <div class="alert alert-success" th:if="${exito}" th:text="${exito}"></div>
     <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
-
-        <div th:if="${user.isEmpty()}">-->
-            <h5> No hay usuarios <a th:href="@{/users/create}">Cargar usuario.</a> </h5>
+<h3><small class="text-muted">List User</small></h3>   
+        <!--<div th:if="${users.isEmpty()}">-->
         </div>
-
-       <div th:unless="${user.isEmpty()}">-->
-
-            <table class="table table-dark table-sm">
-
+<!--<div class="table-responsive" th:unless="${users.isEmpty()}">-->
+        <a th:href="@{/user/create}" class="btn btn-success mb-4">Ingresar usuario</a>
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark text-center">
+       
             <thead>
                     <tr>
            <!--             <th>ID: </th> -->
@@ -68,10 +67,10 @@
                 <td class="col-md-3 px-md-2" th:text="${user.username}"></td>
                 <td class="col-md-3 px-md-2" th:date="${user.fechaCreacion)}"></td>
                 <!--<td sec:authorize="hasRole('ADMIN')" class="col-md-3 px-md-2 d-flex justify-content-around w-100">-->
-                <td> <a class="btn btn-secondary btn-sm" role="button" th:href="@{/users/editar/__${user.dni}__}">Editar</a>
+                <td> <a class="btn btn-secondary btn-sm" role="button" th:href="@{/user/editar/__${user.dni}__}">Editar</a>
                 
                <td>
-                                <form  method="post" th:action="@{/users/delete/__${user.dni}__}">
+                                <form  method="post" th:action="@{/user/delete/__${user.dni}__}">
                                     <button class="btn btn-outline-danger" type="submit">eliminar</button>
                                 </form>
                </td>

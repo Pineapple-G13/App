@@ -1,10 +1,10 @@
 
 package com.pineapple.demo.models.controller;
-
-import com.pineapple.demo.models.entity.Role;
 import com.pineapple.demo.models.entity.Users;
-import com.pineapple.demo.models.service.RoleService;
+import com.pineapple.demo.models.enums.Role;
 import com.pineapple.demo.models.service.UserService;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,19 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
     
      @Autowired
     private UserService userService;
-     @Autowired
-     private RoleService rolService;
+   
      
       @GetMapping()
     public ModelAndView searchAll(){
         ModelAndView mav = new ModelAndView ("users");
         
         List <Users> users = userService.searchAll()  ;
-        mav.addObject("users", users);
+        mav.addObject("user", users);
         
         return mav;
     }
@@ -43,14 +42,14 @@ public class UserController {
         mav.addObject("user", new Users());
         mav.addObject("title", "Create user");
         mav.addObject("action", "guardar");
-        mav.addObject("roles", rolService.searchall());
+       
         return mav;
     }
 //@PreAuthorize("hasRole('ADMIN')")
      @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam String username,@RequestParam Long dni,@RequestParam String password,@RequestParam String email,@RequestParam String firstName,@RequestParam String lastName,@RequestParam Role role,@RequestParam Date fechaCreacion){
-      userService.create(username,dni,password,email,firstName,lastName,role,fechaCreacion);
-         return new RedirectView("/users");
+    public RedirectView guardar(@RequestParam Long dni,@RequestParam String username,@RequestParam String password,@RequestParam String email,@RequestParam String firstName,@RequestParam String lastName,@RequestParam Role role,@RequestParam LocalDate fechaCreacion){
+      userService.create(dni,username,password,email,firstName,lastName,fechaCreacion,role);
+         return new RedirectView("/user");
          
     } 
     @GetMapping("/editar/{dni}")
@@ -59,7 +58,7 @@ public class UserController {
         mav.addObject("user", userService.searchByDni(dni));
         mav.addObject("title", "Editar usuario");
         mav.addObject("action", "modificar");
-        mav.addObject("roles", rolService.searchall());
+       
         return mav;
      }
        @PostMapping("/modificar")

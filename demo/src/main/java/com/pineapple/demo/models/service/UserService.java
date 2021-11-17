@@ -1,9 +1,9 @@
 
 package com.pineapple.demo.models.service;
-
-import com.pineapple.demo.models.entity.Role;
 import com.pineapple.demo.models.entity.Users;
+import com.pineapple.demo.models.enums.Role;
 import com.pineapple.demo.models.repository.UserRepository;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
     private final String MENSAJE="El usuario ingresado no existe";
     
      @Transactional
-    public void create(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion,Role role) {
+    public void create(Long dni, String username, String password, String email, String firstName, String lastName, LocalDate fechaCreacion,Role role) {
     //falta validar que el correo ya exite.
     Users user=new Users();
     
@@ -72,10 +72,6 @@ public class UserService implements UserDetailsService {
 //             
 //    }
         return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
-    }
-//se creo automaticamente
-    public void create(String username, Long dni, String password, String email, String firstName, String lastName, Role role, Date fechaCreacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

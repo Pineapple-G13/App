@@ -1,7 +1,6 @@
 package com.pineapple.demo.models.controller;
 
 import com.pineapple.demo.models.entity.Product;
-import com.pineapple.demo.models.entity.Role;
 import com.pineapple.demo.models.entity.Users;
 import com.pineapple.demo.models.repository.ProductRepository;
 import com.pineapple.demo.models.service.ProductCategoryService;
