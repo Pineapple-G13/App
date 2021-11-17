@@ -17,9 +17,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserDetailsService  {
+public class UserService implements UserDetailsService {
 
-     @Autowired
+    @Autowired
     private UserRepository userRepository;
     @Autowired
      private BCryptPasswordEncoder encoder;
@@ -61,17 +61,17 @@ public class UserService implements UserDetailsService  {
     } 
      @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Users user=userRepository.buscarUsuarioPorUsername(username);
-       
-       if(user ==null){
-       throw new  UsernameNotFoundException(String.format(MENSAJE,username));
-       
-       }
+        Users user = userRepository.buscarUsuarioPorUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format(MENSAJE, username));
+
+        }
 //       User user=userRepository.findByUsername(username).
 //               orElseThrow(()->new UsernameNotFoundException(String.format(MENSAJE, username))); 
 //             
 //    }
-       return new User(user.getUsername(),user.getPassword(),Collections.emptyList());
+        return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
     }
 //se creo automaticamente
     public void create(String username, Long dni, String password, String email, String firstName, String lastName, Role role, Date fechaCreacion) {
