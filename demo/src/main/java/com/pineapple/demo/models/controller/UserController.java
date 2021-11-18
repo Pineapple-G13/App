@@ -39,9 +39,9 @@ public class UserController {
     @GetMapping("/create")
     public ModelAndView create() {
         ModelAndView mav = new ModelAndView("user-formulario");
-        mav.addObject("user", new Users());
-        mav.addObject("title", "Create user");
-        mav.addObject("action", "guardar");
+        mav.addObject("user",new Users());
+        mav.addObject("title","Create user");
+        mav.addObject("action","guardar");
        
         return mav;
     }

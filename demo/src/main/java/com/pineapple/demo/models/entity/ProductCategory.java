@@ -8,18 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="product_categories")
 public class ProductCategory implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "id_category")
-	private Long idCategory;	
-        @Column(name= "product_category_name")
+	@JoinColumn(nullable = false)
+	private Long id;	
+        @JoinColumn(nullable = false)
 	private String productCategoryName;
         @OneToMany(mappedBy="productCategory")
         private List<Product>products;
@@ -27,8 +27,8 @@ public class ProductCategory implements Serializable{
     public ProductCategory() {
     }
 
-    public ProductCategory(Long idCategory, String productCategoryName, List<Product> products) {
-        this.idCategory = idCategory;
+    public ProductCategory(Long id, String productCategoryName, List<Product> products) {
+        this.id= id;
         this.productCategoryName = productCategoryName;
         this.products = products;
     }
@@ -42,14 +42,14 @@ public class ProductCategory implements Serializable{
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-	public Long getIdCategory() {
-		return idCategory;
+	public Long getId() {
+		return id;
 	}
 	
 	// getters y setters
 
-	public void setIdCategory(Long idCategory) {
-		this.idCategory = idCategory;
+	public void setId(Long id) {
+		this.id= id;
 	}
 
 

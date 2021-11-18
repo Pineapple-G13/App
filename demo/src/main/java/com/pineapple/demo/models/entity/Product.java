@@ -7,22 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="products")
+
 public class Product implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_product")
     private Long id;
+    @JoinColumn(nullable = false)
     private String productName;
+    @JoinColumn(nullable = false)
     private String description;
+    @JoinColumn(nullable = false)
     private Integer quantity;
-    @Column(name = "unit_price")
+    @JoinColumn(nullable = false)
     private Double unitPrice;
+    @JoinColumn(nullable = false)
     private String picture;
     @ManyToOne
     private ProductCategory productCategory;
@@ -32,13 +36,13 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String productName, String description, Integer quantity, Double unitPrice, String picture) {
+    public Product(String productName, String description, Integer quantity, Double unitPrice, String picture,ProductCategory productCategory) {
         this.productName = productName;
         this.description = description;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.picture = picture;
-        //this.productCategory = productCategory;
+        this.productCategory = productCategory;
     }
 
     public String getProductName() {

@@ -1,5 +1,5 @@
-
 package com.pineapple.demo.models.service;
+
 import com.pineapple.demo.models.entity.Users;
 import com.pineapple.demo.models.enums.Role;
 import com.pineapple.demo.models.repository.UserRepository;
@@ -22,44 +22,49 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-     private BCryptPasswordEncoder encoder;
-     
-    private final String MENSAJE="El usuario ingresado no existe";
-    
-     @Transactional
-    public void create(Long dni, String username, String password, String email, String firstName, String lastName, LocalDate fechaCreacion,Role role) {
-    //falta validar que el correo ya exite.
-    Users user=new Users();
-    
-    user.setDni(dni);
-    user.setFirstName(firstName);
-    user.setLastName(lastName);
-    user.setEmail(email);
-    user.setUsername(username);
-    user.setPassword(encoder.encode(password));
-    user.setRole(role);
-    user.setFechaCreacion(fechaCreacion);
-    userRepository.save(user);
-    
+    private BCryptPasswordEncoder encoder;
+
+    private final String MENSAJE = "El usuario ingresado no existe";
+
+    @Transactional
+    public void create(Long dni, String username, String password, String email, String firstName, String lastName, LocalDate fechaCreacion, Role role) {
+        //falta validar que el correo ya exite.
+        Users user = new Users();
+
+        user.setDni(dni);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setUsername(username);
+        user.setPassword(encoder.encode(password));
+        user.setRole(role);
+        user.setFechaCreacion(fechaCreacion);
+        userRepository.save(user);
+
     }
-         @Transactional
-     public void modify( String username, String password, String email, String firstName, String lastName){
-     userRepository.modify(username,password,email,firstName,lastName);
-     }
-       @Transactional
-      public List<Users> searchAll() {
+
+    @Transactional
+    public void modify(String username, String password, String email, String firstName, String lastName) {
+        userRepository.modify(username, password, email, firstName, lastName);
+    }
+
+    @Transactional
+    public List<Users> searchAll() {
         return userRepository.findAll();
     }
-       @Transactional
+
+    @Transactional
     public Users searchByDni(Integer dni) {
         return userRepository.findById(dni).orElse(null);
     }
-       @Transactional
-    public void delete(Integer id){
-    userRepository.deleteById(id);
-    
-    } 
-     @Override
+
+    @Transactional
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
+
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = userRepository.buscarUsuarioPorUsername(username);
 
@@ -74,4 +79,3 @@ public class UserService implements UserDetailsService {
         return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
     }
 }
-

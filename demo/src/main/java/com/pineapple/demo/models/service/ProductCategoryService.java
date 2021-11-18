@@ -1,14 +1,9 @@
 package com.pineapple.demo.models.service;
-
 import java.util.List;
 import java.util.Optional;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.pineapple.demo.models.entity.Product;
 import com.pineapple.demo.models.entity.ProductCategory;
 import com.pineapple.demo.models.repository.ProductCategoryRepository;
 import com.pineapple.demo.models.repository.ProductRepository;

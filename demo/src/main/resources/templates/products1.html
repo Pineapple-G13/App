@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    
+    
+    <title>Products</title>
+ </head>   
+ <body>
+     <div class="container mt-5 main">
+    <div class="alert alert-success" th:if="${exito}" th:text="${exito}"></div>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <h1>Product listing</h1>
+    <hr class="mb-4"/>
+   <!-- <div th:if="${products.isEmpty()}">-->
+        <h5>No products loaded. <a th:href="@{/productos/create}">New product.</a></h5>
+    </div>
+     <!--<div class="table-responsive" th:unless="${products.isEmpty()}">-->
+        <a th:href="@{/productos/create}" class="btn btn-success mb-4">New product</a>
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark text-center">
+            <tr>
+                <th class="col-2">ProductName</th>
+                <th class="col-4">Description</th>
+                <th class="col-1">Quantity</th>
+                <th class="col-1">Unitprice</th>
+                <th class="col-1">Picture</th>
+                <th class="col-1">productCategory</th>
+                <th class="col-2">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td class="col-2" th:text="${product.id}"></td>
+                <td class="col-4" th:text="${product.productName}"></td>
+                <td class="col-1" th:text="${product.description}"></td>
+                <td class="col-1" th:text="${product.quantity}"></td>
+                <td class="col-1" th:text="${product.unitPrice}"></td>
+                <td class="col-1" th:text="${product.picture}"></td>
+                <td class="col-2" th:text="${product.productCategory.productCategoryName}">
+                    <div class="d-flex justify-content-around">
+                        <a class="btn btn-warning btn-sm" th:href="@{/product/editar/__${product.id}__}">Editar</a>
+                        <form method="post"
+                              th:action="@{/product/delete/__${product.id}__}">
+                            <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+                        </form>
+                           </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+     </div> 
+                        
+ </body>
+</html>
