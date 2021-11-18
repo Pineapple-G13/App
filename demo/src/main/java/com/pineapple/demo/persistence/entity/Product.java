@@ -27,8 +27,8 @@ public class Product implements Serializable {
     private Double unitPrice;
     //private String picture;
     @ManyToOne
-    @JoinColumn(name="product_category", insertable = false, updatable =false )
-    private Category productCategory;
+    @JoinColumn(name = "id_category", insertable = false, updatable =false )
+    private Category category;
     
     private static final long serialVersionUID = 1L;
 
@@ -36,9 +36,7 @@ public class Product implements Serializable {
 
 
     //getters and setters
-    public Long getIdProduct() {
-        return idProduct;
-    }
+    public Long getIdProduct() { return idProduct; }
 
     public void setIdProduct(Long idProduct) {
         this.idProduct = idProduct;
@@ -76,11 +74,11 @@ public class Product implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public Category getProductCategory() {
-        return productCategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setProductCategory(Category productCategory) {
-        this.productCategory = productCategory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

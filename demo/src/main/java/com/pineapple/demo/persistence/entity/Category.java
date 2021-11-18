@@ -19,16 +19,16 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "product_categories")
+@Table(name = "categories")
 public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_category")
 	private Long idCategory;
-	@Column(name = "product_category_name")
-	private String productCategoryName;
-	@OneToMany(mappedBy = "productCategory")
+	@Column(name = "category_name")
+	private String categoryName;
+	@OneToMany(mappedBy = "category")
 	private List<Product> products;
 
 	public Category() {
@@ -36,7 +36,7 @@ public class Category implements Serializable {
 
 	public Category(Long idCategory, String productCategoryName, List<Product> products) {
 		this.idCategory = idCategory;
-		this.productCategoryName = productCategoryName;
+		this.categoryName = productCategoryName;
 		this.products = products;
 	}
 
@@ -59,11 +59,11 @@ public class Category implements Serializable {
 	}
 
 	public String getProductCategoryName() {
-		return productCategoryName;
+		return categoryName;
 	}
 
 	public void setProductCategoryName(String productCategoryName) {
-		this.productCategoryName = productCategoryName;
+		this.categoryName = categoryName;
 	}
 
 	public static long getSerialversionuid() {

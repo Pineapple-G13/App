@@ -22,7 +22,7 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer idUser;
-    private Long dni;
+    //private Long dni;
     @JoinColumn(nullable = false)
     private String username;
     @JoinColumn(nullable = false)
@@ -34,22 +34,21 @@ public class Users implements Serializable {
     @Column(name = "user_lastname")
     private String lastName;
     @Temporal(TemporalType.DATE)
-    private Date fechaCreacion ;
+    private Date creationDate;
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, insertable = false, updatable =false )
     private Role role;
 
     public Users() {
     }
 
-    public Users(Long dni, String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
-        this.dni = dni;
+    public Users(String username, String password, String email, String firstName, String lastName, Date fechaCreacion, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.fechaCreacion = fechaCreacion;
+        this.creationDate = creationDate;
         this.role = role;
     }
 
@@ -63,11 +62,11 @@ public class Users implements Serializable {
     }
 
     public Date getFechaCreacion() {
-        return fechaCreacion;
+        return creationDate;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+        this.creationDate = fechaCreacion;
     }
 
     
@@ -83,14 +82,6 @@ public class Users implements Serializable {
    
     
     private static final long serialVersionUID = 1L;
-
-    public Long getDni() {
-        return dni;
-    }
-
-    public void setDni(Long dni) {
-        this.dni = dni;
-    }
 
     public String getUsername() {
         return username;
