@@ -1,4 +1,4 @@
-package com.pineapple.demo.models.entity;
+package com.pineapple.demo.persistence.entity;
 
 import java.io.Serializable;
 
